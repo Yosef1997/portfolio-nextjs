@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  @font-face {
+    font-family: pp neue montreal;
+    src: local("PP Neue Montreal"),
+      url(https://fonts.cdnfonts.com/s/100431/ppneuemontreal-book.woff)
+        format("woff");
+  }
+}
+
+body {
+  overflow-x: hidden;
+}
