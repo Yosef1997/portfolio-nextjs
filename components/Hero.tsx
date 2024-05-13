@@ -1,22 +1,45 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import navUtil from "@/utils/nav"
 import { Navbar } from "@/components"
 import SideBar from "./SideBar"
+import ScrollContext from "@/context/ScrollContext"
 
 const Hero = () => {
   const { headerNav } = navUtil
-  const [showSidebar, setShowSidebar] = useState(false)
+  const {
+    showElement,
+    setShowElement: setShowElementGlobal,
+    showSidebar,
+    setShowSidebar: setShowSidebarGlobal,
+  } = useContext(ScrollContext)
 
   const toggleSidebar = () => {
-    setShowSidebar(!showSidebar)
+    setShowSidebarGlobal(!showSidebar)
     console.log(showSidebar)
   }
 
+  const handleScroll = () => {
+    const scrollPosition = window.scrollY
+    const viewportHeight = window.innerHeight
+    if (scrollPosition > viewportHeight) {
+      setShowElementGlobal(true)
+    } else {
+      setShowElementGlobal(false)
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [showElement])
+
+  console.log(showElement)
+
   return (
     <>
-      <div className='bg-light-grey min-h-svh overflow-x-hidden'>
+      <div className='bg-light-grey h-svh overflow-x-hidden'>
         <Navbar
           title='@Ayush Barnwal'
           navList={headerNav}

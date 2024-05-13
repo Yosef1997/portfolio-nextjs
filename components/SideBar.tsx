@@ -13,7 +13,7 @@ const SideBar: React.FC<{ onClick: any }> = ({ onClick }) => {
   ]
 
   return (
-    <div className='h-svh w-1/2 p-16 bg-black fixed top-0 right-0'>
+    <div className='h-svh w-1/2 p-16 bg-black fixed top-0 right-0 z-50'>
       <div className='relative text-6xl font-medium font-neue-montreal text-off-white text-left pt-14 pb-32'>
         <button
           className='absolute right-0 top-0 bg-black text-white'
